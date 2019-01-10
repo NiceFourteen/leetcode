@@ -7,20 +7,16 @@ public:
         if(x>0 && x%10==0){
             return false;
         }
-       int temp=x;
-       int count = 0;
-       while(temp>0){
-           count*=10;
-           temp=temp/10;
-       }
-       while(x>0){
-           if(x/count!=x%10){
-               return false;
-           }
-           x=(x%count)/10;
-           
-       }
-       return true; 
+        int temp =x;
+        int res=0;
+        while(temp>0){
+            res = res*10+temp%10;
+            temp=temp/10;
+        }
+        if(res==x){
+            return true;
+        }
+        return false;
        
     }
 };
