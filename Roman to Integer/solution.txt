@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        int sum=0;
+        for(int i=0;i<s.length();){
+            string temp = s.substr(i,1);
+            if(temp=="I"){
+                if(s.substr(i+1,1).compare("V")==0){
+                    sum+=4;
+                    i=i+2;
+                }else if(s.substr(i+1,1).compare("X")==0){
+                    sum+=9;
+                    i=i+2;
+                }else{
+                    sum+=1;
+                    i++;
+                }
+            }else if(temp.compare("V")==0){
+                sum+=5;
+                i++;
+            }else if(temp.compare("X")==0){
+                if(s.substr(i+1,1).compare("L")==0){
+                    sum+=40;
+                    i+=2;
+                }else if(s.substr(i+1,1).compare("C")==0){
+                    sum+=90;
+                    i+=2;
+                }else{
+                    sum+=10;
+                    i++;
+                }
+            }else if(temp.compare("L")==0){
+                sum+=50;
+                i++;
+            }else if(temp.compare("C")==0){
+                if(s.substr(i+1,1).compare("D")==0){
+                    sum+=400;
+                    i+=2;
+                }else if(s.substr(i+1,1).compare("M")==0){
+                    sum+=900;
+                    i+=2;
+                }else{
+                    sum+=100;
+                    i++;
+                }
+            }else if(temp.compare("D")==0){
+                sum+=500;
+                i++;
+            }else{
+                sum+=1000;
+                i++;
+            }
+        }
+        return sum;
+    }
+};
