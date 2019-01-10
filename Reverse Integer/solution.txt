@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int reverse(int x) {
+        int out=0;
+        int temp=0;
+        if(x==0){
+            return 0;
+        }
+        if(x>0){
+            while(x>0){
+                out=out*10+x%10;
+                temp=x%10;
+                if(out%10!=temp){
+                    return 0;
+                }
+                x=x/10;
+            }
+            return out;
+        }
+        if(x<0){
+             x=-x;
+             while(x>0){
+                out=out*10+x%10;
+                temp=x%10;
+                 if(out%10!=temp){
+                    return 0;
+                }
+                x=x/10;
+            }
+            return -out;
+        }
+    }
+};
