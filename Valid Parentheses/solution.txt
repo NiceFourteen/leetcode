@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isValid(string s) {
+       stack<char>myst;
+        for(int i=0;i<s.size();i++){           
+            
+            switch (s[i]){
+                case ')':
+                    if(myst.empty() || myst.top() != '(' ) return false;
+                    myst.pop();
+                    break;
+                case '}':
+                    if(myst.empty() || myst.top() != '{') return false;
+                    myst.pop();
+                    break;
+                case ']':
+                    if(myst.empty() || myst.top() != '[') return false;
+                    myst.pop();
+                    break;
+                default:
+                    myst.push(s[i]);
+                    break;
+                  
+            }
+        }
+        return myst.empty();
+    }
+};
