@@ -1,0 +1,2 @@
+There is a mysterious question  which is when I use if to judge if the element is "(","{"or"[".But it failed.
+For ]})aso can pass the judgement.But I didn't get the reason.
