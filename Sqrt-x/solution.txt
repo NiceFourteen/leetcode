@@ -1,0 +1,16 @@
+//when you solve this question you must have a consideration on the range of integer  so what is the reason of i=min(46340,x/2-1),
+//but this solution is take too much time
+class Solution {
+public:
+    int mySqrt(int x) {
+        if(x==0) return 0;
+        if(x==1) return 1;
+        int i = min(46340,x/2+1);
+        if(46340*46340<x)   return 46340;
+        for(i;i>0;i--){
+            if(i*i == x)  return i;
+            if( i*i>x && (i-1)*(i-1)<x) return i-1;
+        }
+        return 0;
+    }
+};
