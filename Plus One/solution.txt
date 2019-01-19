@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+       int last_position = digits.size()-1;
+          for(int i = last_position;i>=0;i--){
+             if(++digits[i]>=10){
+                 digits[i] = 0;   
+                 if(i==0)
+                     digits.insert(digits.begin(),1);
+             }else
+                 return digits;
+      }
+        return digits;
+    }
+};
