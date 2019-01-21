@@ -1,0 +1,29 @@
+//I forget check head==null at the first time
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+       ListNode* inode = head;
+        ListNode* temp = inode;
+        if(head==NULL) return head;
+        while( inode->next != NULL ){
+            if(inode->next->val == temp->val ){
+                inode->next = inode->next->next;
+            }else{
+                
+                inode = inode->next;
+                temp=inode;
+            }
+
+        }
+        return head;
+    }
+};
+
