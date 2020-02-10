@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        
+        int len = str.length();
+        const int MIN = -2147483648;
+        const int MAX = 2147483647;
+        
+        bool flag = true;
+        bool isMinus = false;
+        long result = 0;
+        
+        for(int i = 0; i < len; i++){
+            //对第一个非空字符进行判断
+            if(str[i] != ' ' && flag == true){
+                flag = false;
+                if (str[i] == '-') {
+                    isMinus = true;
+                } else if (str[i] == '+'){
+                    isMinus = false;
+                } else if(str[i] > '9' || str[i] < '0'){
+                    return 0;
+                } else if(str[i] >= '0' && str[i] <= '9'){
+                    result = result*10 + (str[i] - '0');
+                }
+            }
+            else if((str[i] < '0' || str[i] > '9') && flag == false){
+                //如果遇到非数字字符
+                return result;
+            } else if (str[i] >= '0' && str[i] <= '9') {
+                if(isMinus == true){
+                    int temp = result*10 - (str[i] - '0');
+                    result = (temp/10 == result) ? temp : MIN;
+                    if(result == MIN){
+                        return result;
+                    }
+                } else {
+                    int temp = result*10 + (str[i] - '0');
+                    result = (temp/10 == result) ? temp : MAX;
+                    if(result == MAX){
+                        return result;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+};
